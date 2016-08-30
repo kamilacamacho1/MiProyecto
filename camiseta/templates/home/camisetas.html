@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Camisetas
+
+{% endblock %}
+
+{% block content %}
+	<h1>Lista de camisetas</h1>
+	<br>
+	{% if camisetas %}
+	<table class=" table table_hover">
+		<theader> 
+			<tr>
+				<th><font color = blue> Producto</font></th>
+				<th><font color = blue>Precio</font></th>
+				<th><font color = blue>Stock</font></th>
+			</tr>
+		</theader>
+		{% for c in camisetas %}
+			<body>
+				<tr>
+					<td>{{ c.nombre }} </td>
+					<td>{{ c.precio }} </td>
+					<td>{{ c.stock}} </td>
+				
+					<td><a class="btn" href="/camiseta/{{c.id}}"><li class="icon-search"></li>Ver </a></td>
+					
+					</td>
+				</tr>
+			</body>
+			</p>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No existen camisetas activas a la venta :( </h2>
+	{% endif %}
+
+	{% if camisetas %}
+	<div class ="pagination">
+		<div class = "pagination pagination_centered">
+			<ul>
+				<li><a href="/camisetas/page/1"> << </a></li>
+				{% if camisetas.has_previous %}
+				<li><a href="/camisetas/page/{{camisetas.previous_page_number}} "></a>Anterior</li>
+				{% else %}
+				<li><a href="#">Anterior</a></li>
+				{% endif %}
+
+				{% if camisetas.has_next %}
+					<li><a href="/camisetas/page/{{camisetas.next_page_number}} "></a>Siguiente</li>
+				{% else %}
+					<li><a href="#">Siguiente</a></li>
+				{% endif %}
+				<li><a href="/camisetas/page/{{ camisetas.paginator.num_pages }} "> >> </a></li>
+	
+			</ul>
+		</div>
+	</div>
+			<br>
+			<h4>Pagina {{ camisetas.number }} de {{ camisetas.paginator.num_pages }} </h4>
+	{% endif %}
+{% endblock %}
+ 

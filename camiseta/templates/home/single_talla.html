@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Talla
+{% endblock %}
+
+{% block content %}
+	<h1>{{ Talla.nombre }}</h1>
+	{% if Talla.imagen %}
+		<img src="/media/{{ Talla.imagen }}"  width ="80px" heigth ="80px">
+	{% endif %}
+	<br>
+	<p> <b>Talla:</b> {{ talla.talla}} </p>
+	<p> <b>Imagen:</b> {{ marca.imagen }}</p>
+	{% for c in categorias %}
+		<span class="label label-info">{{ c.nombre}}</span>
+	{% endfor %}
+
+	<br>
+	<a href="/marca/page/1">Mostrar la lista de marcas</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Camiseta
+{% endblock %}
+
+{% block content %}
+	<h1>{{ camiseta.nombre }}</h1>
+	{% if camiseta.imagen %}
+		<img src="/media/{{ camiseta.imagen }}"  width ="80px" heigth ="80px">
+	{% endif %}
+	<br>
+	<p> <b><font color = blue>Marca:</font></b> {{ camiseta.marca}} </p>
+	<p> <b><font color = blue>Descripcion:</font></b> {{ camiseta.descripcion }}</p>
+	<p> <b><font color = blue>Precio:</font></b> {{ camiseta.precio}} </p>
+	<p> <b><font color = blue>Stock:</font></b> {{ camiseta.stock}} unidades </p>
+	{% for m in modelo %}
+		<span class="label label-info">{{ m.nombre}}</span>
+	{% endfor %}
+
+	<br>
+	<!--<a href="/camiseta/page/1">Mostrar la lista de camisetas</a>-->
+{% endblock %}
